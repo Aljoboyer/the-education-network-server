@@ -17,9 +17,37 @@ const AddEmployees =  (req, res) => {
   })
 }
 
-  
+const DeleteEmployees =  (req, res) => {
+
+  let sql = `DELETE FROM employee WHERE id = '${req.params.id}'`
+  MysqlPool.query(sql, function(err, result) {
+    if(err) throw err ;
+    res.send({success: 'data delted successfully'})
+  })
+}
+
+const getEmployeeByID =  (req, res) => {
+  console.log('req.params --->', req.params)
+  let sql = `SELECT * FROM employee WHERE id = '${req.params.id}'`
+  MysqlPool.query(sql, function(err, result) {
+    if(err) throw err ;
+    res.send(result)
+  })
+}
+
+const UpdateEmployee = (req, res) => {
+  const data = req.body
+  const sql = `UPDATE employee SET Name = '${data.name}', City = '${data.city}', Position = '${data.position}', Salary = '${data.salary}', country = '${data.country}' WHERE id = ${req.params.id}`;
+  MysqlPool.query(sql, function(err, result) {
+    if(err) throw err ;
+    res.send(result)
+  })
+}
 module.exports = {
   GetAllEmployees,
-  AddEmployees
+  AddEmployees,
+  DeleteEmployees,
+  getEmployeeByID,
+  UpdateEmployee
   };
   

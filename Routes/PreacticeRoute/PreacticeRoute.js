@@ -13,9 +13,15 @@ const router = require("express").Router();
 
 const {
     GetAllEmployees,
-    AddEmployees
+    AddEmployees,
+    DeleteEmployees,
+    getEmployeeByID,
+    UpdateEmployee
 } = require("../../Controller/PracticeController/PracticeController");
 
 router.get("/employee", GetAllEmployees);
 router.post("/employee", AddEmployees);
+router.delete("/employee/:id", DeleteEmployees);
+router.get("/employee/:id", getEmployeeByID);
+router.put("/employee/:id", UpdateEmployee);
 module.exports = router;
