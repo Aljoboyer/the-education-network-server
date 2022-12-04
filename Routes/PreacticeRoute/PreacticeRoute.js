@@ -16,7 +16,8 @@ const {
     AddEmployees,
     DeleteEmployees,
     getEmployeeByID,
-    UpdateEmployee
+    UpdateEmployee,
+    getUniqueCategory
 } = require("../../Controller/PracticeController/PracticeController");
 
 router.get("/employee", GetAllEmployees);
@@ -24,4 +25,6 @@ router.post("/employee", AddEmployees);
 router.delete("/employee/:id", DeleteEmployees);
 router.get("/employee/:id", getEmployeeByID);
 router.put("/employee/:id", UpdateEmployee);
+router.get("/category", getUniqueCategory);
 module.exports = router;
+
