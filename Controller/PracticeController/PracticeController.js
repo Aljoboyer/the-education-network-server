@@ -69,12 +69,59 @@ const getUniqueCategory = (req, res) => {
     })
 }
 
+const uploadImage = (req, res) => {
+  const data = req.body
+  console.log('Hitted', req)
+  const imgData = req.files.img.data;
+
+  const encodedpic = imgData.toString('base64');
+  // const img = Buffer.from(encodedpic, 'base64');
+
+  let sql = `INSERT INTO imagestorage (dogname, imgthree) VALUES ('${data.dogname}', '${encodedpic}')`;
+  try {
+    MysqlPool.query(sql, function(err, result) {
+      if(err){
+       console.log(err)
+      }
+      else{
+        res.send({success: 'data added successfully'})
+      }
+     
+    })
+  } catch (error) {
+    console.log('Error')
+  }
+  
+}
+
+const GetImages = (req, res) => {
+  let sql = "SELECT * FROM imagestorage";
+
+  MysqlPool.query(sql, function(err, result) {
+    if(err) throw err ;
+    res.send(result)
+  })
+}
+
+const GetTwoTableData = (req, res) => {
+
+  let sql = "SELECT  employee.name, employee.Position, Student.subject, Student.City, Student.roll from employee inner join Student on employee.City = Student.City";
+
+  MysqlPool.query(sql, function(err, result) {
+    if(err) throw err ;
+    res.send(result)
+  })
+}
+
 module.exports = {
   GetAllEmployees,
   AddEmployees,
   DeleteEmployees,
   getEmployeeByID,
   UpdateEmployee,
-  getUniqueCategory
+  getUniqueCategory,
+  uploadImage,
+  GetImages,
+  GetTwoTableData
   };
   
