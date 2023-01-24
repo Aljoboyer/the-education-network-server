@@ -20,7 +20,9 @@ const {
     getUniqueCategory,
     uploadImage,
     GetImages,
-    GetTwoTableData
+    GetTwoTableData,
+    OutterJoindata,
+    AddMultpledata
 } = require("../../Controller/PracticeController/PracticeController");
 
 router.get("/employee", GetAllEmployees);
@@ -32,7 +34,8 @@ router.get("/category", getUniqueCategory);
 router.post("/upload", uploadImage);
 router.get("/GetImages", GetImages);
 router.get("/GetTwoTableData", GetTwoTableData);
-
+router.get("/OutterJoindata", OutterJoindata);
+router.post("/AddMultpledata", AddMultpledata);
 
 module.exports = router;
 

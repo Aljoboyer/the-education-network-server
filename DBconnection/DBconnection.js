@@ -20,9 +20,9 @@ const mysql = require('mysql2');
 
 const MysqlPool = mysql.createConnection({
     host: '127.0.0.1',
-    database: 'learningphaseone',
+    database: 'learningphasetwo',
     user: 'root',
-    password: 'Pa$sw0rd'
+    password: 'Tanvir1233'
 })
 
 const connectMysqlDB = () => {
